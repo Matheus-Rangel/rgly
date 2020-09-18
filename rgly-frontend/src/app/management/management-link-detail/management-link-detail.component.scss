@@ -1,0 +1,32 @@
+@import '~@angular/material/theming';
+.wrapper{
+  padding: 3rem;
+  h1{
+    margin-bottom: 0.1rem !important;
+  }
+}
+.link-short{
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: map-get($mat-deep-purple, 600);
+  *{
+    margin-right: 0.5rem;
+  }
+}
+.divider{
+  margin: 1rem 0;
+  height: 1px;
+  width: 100%;
+  background-color: map-get($mat-gray, 400);
+}
+.no-link-wrapper{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p{
+    color: map-get($mat-gray, 600)
+  }
+}

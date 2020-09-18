@@ -1,0 +1,23 @@
+<div *ngIf="link" class="wrapper">
+  <span *ngIf="date.getHours()" class="text-gray-600 text-xs mb-1">
+    CRIADO {{date.getDay()}} {{date.getMonth().toString().toUpperCase()}} {{date.getFullYear()}}, {{date.getHours()}}:{{date.getMinutes()}}
+  </span>
+  <h1 class="m-0">{{link.aliasName}}</h1>
+  <a class="text-gray-700 font-light" [href]="link.url" target="_blank">{{link.url}}</a>
+  <div class="link-short mt-4 flex">
+    <a [routerLink]="'/'+link.linkName" target="_blank">/{{link.linkName}}</a>
+<!--    <button mat-stroked-button (click)="edit()" color="primary">EDITAR</button>-->
+    <button mat-stroked-button (click)="delete()" color="primary">DELETAR</button>
+  </div>
+  <div class="divider"></div>
+  <div>
+    <div class="clicks-count">
+      <span>{{link.clicks}}</span>
+      <mat-icon>graphic_eq</mat-icon>
+    </div>
+    Total de Cliques
+  </div>
+</div>
+<div *ngIf="!link" class="no-link-wrapper">
+  <p>Nenhum Link Selecionado</p>
+</div>

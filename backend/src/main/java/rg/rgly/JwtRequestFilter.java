@@ -39,7 +39,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 username = jwtService.extractUsername(jwt);
             }catch (ExpiredJwtException e){
                 filterChain.doFilter(request, response);
-                return;
             }
         }
         if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){

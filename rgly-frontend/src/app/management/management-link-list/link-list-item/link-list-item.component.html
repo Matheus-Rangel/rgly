@@ -1,0 +1,14 @@
+<div [ngClass]="{'bg-white':active}" (click)="selectLink()" class="link-item">
+  <div class="divider"></div>
+  <div class="content">
+    <div class="link-data">
+      <p>{{date.getDay()}} de {{date.getMonth().toString()}} {{date.getFullYear()}}</p>
+      <h2>{{link.aliasName}} <a [routerLink]="'/' + link.linkName" target="_blank">{{'/' + link.linkName}}</a></h2>
+      <a class="text-gray-700 font-light" [href]="this.link.url" target="_blank">{{link.url}}</a>
+    </div>
+    <div class="clicks-count">
+      <span>{{link.clicks}}</span>
+      <mat-icon>graphic_eq</mat-icon>
+    </div>
+  </div>
+</div>

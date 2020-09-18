@@ -1,12 +1,15 @@
 package rg.rgly.services;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import rg.rgly.domain.Link;
 import rg.rgly.dtos.LinkRequest;
 import rg.rgly.repositories.LinkRepository;
 import rg.rgly.repositories.RglyUserRepository;
 
 import javax.transaction.Transactional;
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -30,10 +33,12 @@ public class LinkManagementService {
         return link.getUrl();
     }
 
+    @Transactional
     public List<Link> findByOwner(String username){
         return linkRepository.findByOwnerUsername(username);
     }
 
+    @Transactional
     public Link saveLink(LinkRequest linkRequest, String username) throws Exception {
         var linkOpt = linkRepository.findById(linkRequest.getLinkName());
         if(linkOpt.isPresent()){
@@ -50,7 +55,23 @@ public class LinkManagementService {
             link.setUrl(linkRequest.getUrl());
             link.setAliasName(linkRequest.getAliasName());
             link.setLinkName(linkRequest.getLinkName());
+            link.setCreatedDate(Instant.now());
+            link.setClicks(0);
             return linkRepository.save(link);
+        }
+    }
+
+    public void deleteLink(String linkName, String username) throws Exception {
+        var linkOpt = linkRepository.findById(linkName);
+        if(linkOpt.isPresent()){
+            var link = linkOpt.get();
+            if(link.getOwner().getUsername().equals(username)){
+                linkRepository.delete(linkOpt.get());
+            }else {
+                throw new Exception("Sem permissão");
+            }
+        }else{
+            throw new Exception("Não encontrado");
         }
     }
 }

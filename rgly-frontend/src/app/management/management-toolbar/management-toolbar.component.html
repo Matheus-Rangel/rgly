@@ -1,0 +1,12 @@
+<mat-toolbar class="justify-between" color="primary">
+  <div class="bg-white rounded-full">
+    <img class="h-16" src="assets/logo-5.svg">
+  </div>
+  <div class="flex justify-between w-64">
+    <button class="mr-2"(click)="createLink()" mat-flat-button color="accent">Criar Link</button>
+    <button mat-raised-button  [matMenuTriggerFor]="menu">{{upperFirstLetter(authState.username)}} <mat-icon>expand_more</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button (click)="logout()" mat-menu-item>Logout</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

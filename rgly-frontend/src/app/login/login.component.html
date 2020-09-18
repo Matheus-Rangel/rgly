@@ -1,19 +1,25 @@
-
-<div class="login-container  flex rounded-lg border border-gray-400">
-  <img class="mt-10 mb-10 h-10" src="assets/logo-4.svg">
-  <p class="mat-body font-normal text-xl">Fazer login</p>
-  <p>
-    <mat-form-field class="w-64" appearance="outline">
-      <mat-label>Nome de Usuário</mat-label>
-      <input matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field class="w-64" appearance="outline">
-      <mat-label>Senha</mat-label>
-      <input matInput>
-    </mat-form-field>
-  </p>
-  <button mat-flat-button color="primary">Entrar</button>
+<div class="h-screen w-screen bg-gray-200">
+  <mat-card class="login-container  flex ">
+    <img class="pt-4 mb-5 h-16" src="assets/logo-4.svg">
+    <p class="mat-body text-gray-800 font-font-normal text-lg">Login</p>
+    <div class="mt-16" *ngIf="isLoading">
+      <mat-spinner diameter="50" strokeWidth="5"></mat-spinner>
+    </div>
+    <form [ngClass]="{'hidden': isLoading}" class="flex mt-4 flex-col items-center" (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+      <mat-form-field class="w-64" appearance="outline">
+        <mat-label>Nome de Usuário</mat-label>
+        <input matInput id="username" name="username" ngModel>
+      </mat-form-field>
+      <mat-form-field class="w-64" appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input type="password" matInput name="password" ngModel>
+        <mat-error>Usuário ou senha incorretos.</mat-error>
+      </mat-form-field>
+      <div class="self-end mx-4 my-1">
+        <button mat-flat-button color="primary" type="submit">Entrar</button>
+      </div>
+    </form>
+  </mat-card>
 </div>
+
 

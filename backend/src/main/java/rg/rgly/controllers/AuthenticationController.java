@@ -4,16 +4,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import rg.rgly.dtos.AuthenticationRequest;
 import rg.rgly.dtos.AuthenticationResponse;
 import rg.rgly.services.JwtService;
 import rg.rgly.services.RglyUserDetailService;
 
 @RestController
+@CrossOrigin
 public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
     private final RglyUserDetailService rglyUserDetailService;

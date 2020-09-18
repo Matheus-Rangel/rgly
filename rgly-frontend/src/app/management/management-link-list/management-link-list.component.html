@@ -1,0 +1,16 @@
+<div class="links-wrapper">
+  <mat-card class="links-search-card">
+    <mat-form-field class="links-search" appearance="standard">
+      <mat-label>Pesquisar</mat-label>
+      <input matInput (keyup)="filterList($event)" placeholder="Nome do Link">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <div class="flex justify-between items-center">
+      <span class="text-gray-800">{{filteredList.length}} Links</span>
+      <button (click)="refresh()" class="text-gray-700" mat-icon-button><mat-icon>refresh</mat-icon></button>
+    </div>
+  </mat-card>
+  <div>
+    <app-link-list-item *ngFor="let link of filteredList" [link]="link"></app-link-list-item>
+  </div>
+</div>

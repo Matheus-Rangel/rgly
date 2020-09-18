@@ -1,0 +1,23 @@
+.not-found-top-bar {
+  display: flex;
+  background-color: #673ab7;
+}
+.not-found-img {
+  background: url('~src/assets/john-travolta-confuso.jpg');
+  background-size: 100% 100%;
+  height: calc(100vh - 4rem);
+  width: 100vw;
+}
+.not-found-black-cover{
+  background: rgba(0,0,0,0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
+.not-found-404{
+  font-size: 8rem;
+  padding-bottom: 3rem;
+  font-weight: 100;
+}

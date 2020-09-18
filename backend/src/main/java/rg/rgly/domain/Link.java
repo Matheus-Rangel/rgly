@@ -24,14 +24,14 @@ public class Link {
     @ManyToOne
     @JsonIgnore
     private RglyUser owner;
-    private Integer clicks;
+    private Integer clicks = 0;
     @ElementCollection
     @MapKeyColumn(name="location")
     @Column(name="value")
     @CollectionTable(name="link_clicks_by_location",
             joinColumns=@JoinColumn(name="link_name"),
             indexes = @Index(name = "location_link_name_idx", columnList = "link_name"))
-    private Map<String, Integer> clicksByLocation;
+    private Map<String, Integer> clicksByLocation = new HashMap<>();
 
     public void addClick(String location){
         clicks++;
